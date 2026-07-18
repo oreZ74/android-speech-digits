@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <!-- ==========================================
+         GUIDELINES für konsistente Margins (Largest-Font-Support)
+         ========================================== -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <!-- ==========================================
+         SCROLLABLE CONTENT AREA
+         clipChildren=false: Pulse-Ringe nicht abschneiden
+         ========================================== -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/debugCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <!-- ==========================================
+                 HEADER: Titel + Info-Button (horizontal)
+                 WCAG 2.4.1: Titel importantForAccessibility="no" für Bypass
+                 ========================================== -->
+            <LinearLayout
+                android:id="@+id/headerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="8dp"
+                android:layout_marginBottom="4dp">
+
+                <!-- Titel links -->
+
+                <!-- Info-Button rechts -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:importantForAccessibility="no"
+                    android:text="@string/app_name"
+                    android:textColor="@color/text_primary"
+                    android:textSize="23sp"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnInfo"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="0dp"
+                    android:contentDescription="@string/cd_info_button"
+                    app:icon="@android:drawable/ic_menu_info_details"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/text_secondary"
+                    app:rippleColor="@color/ripple_surface" />
+
+            </LinearLayout>
+
+            <!-- Subtitle komplett entfernt (visibility=gone) -->
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_subtitle"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"
+                android:importantForAccessibility="no"
+                android:visibility="gone"
+                android:layout_marginBottom="0dp" />
+
+            <!-- ==========================================
+                 HAUPT-BUTTON: Mikrofon-Button mit Icon
+
+                 WCAG 2.2 AA Large Font Fix:
+                 - Icon INNERHALB des Kreises (zentriert)
+                 - Label UNTERHALB des Kreises (außerhalb)
+                 - Kompakte Größen für Largest Font (200%) ohne Scrollen
+
+                 Pulse-Ringe: clipChildren=false für volle Sichtbarkeit
+                 ========================================== -->
+            <!-- Wrapper für Button + Label untereinander -->
+            <LinearLayout
+                android:id="@+id/micButtonWrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <!-- Button-Container mit Pulse-Ringen -->
+                <FrameLayout
+                    android:id="@+id/micButtonContainer"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <!-- Äußerer Puls-Ring (animiert, nur bei RECORDING sichtbar) -->
+                    <View
+                        android:id="@+id/micOuterRing"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:alpha="0"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_mic_outer_ring" />
+
+                    <!-- Mittlerer Ring (nur bei RECORDING sichtbar) -->
+                    <View
+                        android:id="@+id/micMiddleRing"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:alpha="0"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_mic_middle_ring" />
+
+                    <!-- Blauer Kreis-Button (NUR Icon, KEIN Text) -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModePin"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:minHeight="180dp"
+                        android:minWidth="180dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:textSize="0sp"
+                        android:contentDescription="@string/cd_mic_button_idle"
+                        android:stateListAnimator="@null"
+                        android:nextFocusDown="@id/resultCard"
+                        app:backgroundTint="@color/mic_inner"
+                        app:cornerRadius="90dp"
+                        app:elevation="12dp"
+                        app:rippleColor="@color/mic_ripple" />
+
+                    <!-- Icon-Overlay (nur Mikrofon, zentriert) -->
+                    <ImageView
+                        android:id="@+id/ivMicIcon"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_mic"
+                        android:importantForAccessibility="no"
+                        app:tint="@android:color/white" />
+
+                </FrameLayout>
+
+                <!-- Label UNTERHALB des Kreises (skaliert frei ohne Clipping) -->
+                <TextView
+                    android:id="@+id/tvButtonLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_pin_mode"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:layout_marginTop="8dp"
+                    android:importantForAccessibility="no" />
+
+            </LinearLayout>
+
+            <!-- ==========================================
+                 LANGUAGE HINT: Warns English users to speak German digits
+                 Hidden on German systems (string is empty)
+                 ========================================== -->
+            <TextView
+                android:id="@+id/tvInputLanguageHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/input_language_hint"
+                android:textColor="@color/colorWarning"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                tools:visibility="gone"
+                android:importantForAccessibility="yes" />
+
+            <!-- ==========================================
+                 RESULT CARD: Status, Ergebnis, Copy
+                 ========================================== -->
+            <!-- Result Card: Dekorativer Container (nicht fokusierbar)
+                 TalkBack fokussiert die Kinder (Status, PIN, Anweisung) einzeln
+                 LÖSUNG A für Accessibility Scanner "Text nicht enthalten" -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/resultCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:importantForAccessibility="no"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="8dp"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="0dp"
+                app:rippleColor="@color/ripple_surface">
+
+                <LinearLayout
+                    android:id="@+id/resultContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="24dp"
+                    android:importantForAccessibility="no"
+                    android:focusable="false">
+
+                    <!-- Status Headline ("Bereit", "Höre zu…", "PIN erkannt!") -->
+                    <TextView
+                        android:id="@+id/textStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status_ready"
+                        android:textColor="@color/status_ready"
+                        android:textSize="22sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="14sp"
+                        android:autoSizeMaxTextSize="26sp"
+                        android:autoSizeStepGranularity="1sp"
+                        android:focusable="true"
+                        android:importantForAccessibility="yes"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- PIN Anzeige (große Ziffern mit Spacing, WCAG: ≥3:1 Kontrast)
+                         WICHTIG: match_parent + maxLines=1 + autoSize = immer 1 Zeile
+                         auch bei Largest Font (4 Ziffern "1 2 3 4") -->
+                    <TextView
+                        android:id="@+id/textPinResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/result_pin"
+                        android:textSize="40sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.3"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:includeFontPadding="false"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="28sp"
+                        android:autoSizeMaxTextSize="48sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:visibility="gone"
+                        android:importantForAccessibility="auto"
+                        android:focusable="true"
+                        tools:text="1 2 4 2"
+                        tools:visibility="visible" />
+
+                    <!-- Anweisung / Hinweis -->
+                    <TextView
+                        android:id="@+id/textInstruction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instruction_press_button"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:maxLines="4"
+                        android:lineSpacingExtra="2dp"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="20sp"
+                        android:autoSizeStepGranularity="1sp"
+                        android:focusable="true"
+                        android:importantForAccessibility="yes"
+                        android:layout_marginTop="12dp" />
+
+                    <!-- Copy Button (Touch-Target 48dp)
+                         TalkBack nutzt sichtbaren Button-Text "PIN kopieren" -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCopyResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:minWidth="180dp"
+                        android:paddingHorizontal="24dp"
+                        android:paddingVertical="12dp"
+                        android:text="@string/btn_copy_pin"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="15sp"
+                        android:textAllCaps="false"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_marginTop="20dp"
+                        android:visibility="gone"
+                        android:enabled="false"
+                        android:focusable="true"
+                        android:importantForAccessibility="yes"
+                        android:accessibilityTraversalAfter="@id/resultCard"
+                        app:backgroundTint="@color/colorAccent"
+                        app:cornerRadius="26dp"
+                        app:icon="@android:drawable/ic_menu_upload"
+                        app:iconGravity="start"
+                        app:iconPadding="8dp"
+                        app:iconSize="20dp"
+                        app:iconTint="?attr/colorOnSecondary"
+                        app:rippleColor="@color/ripple_secondary"
+                        tools:visibility="visible" />
+
+                    <!-- Copy Success Indicator - visuelles Feedback nur
+                         TalkBack: resultCard.contentDescription wird aktualisiert -->
+                    <TextView
+                        android:id="@+id/textCopySuccess"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/result_copied"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        android:layout_marginTop="12dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:importantForAccessibility="no"
+                        tools:visibility="visible" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ==========================================
+                 LIVE REGION ANNOUNCEMENT VIEW
+                 Dediziertes unsichtbares TextView für dynamische TalkBack-Ansagen
+                 - Ersetzt announceForAccessibility() Calls
+                 - Verhindert doppelte Ansagen bei Fokus
+                 - Datenschutz: PIN wird nur einmal vorgelesen
+                 ========================================== -->
+            <TextView
+                android:id="@+id/a11yAnnouncement"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:visibility="invisible"
+                android:accessibilityLiveRegion="polite"
+                android:importantForAccessibility="yes"
+                android:focusable="false"
+                android:textSize="1sp" />
+
+            <!-- ==========================================
+                 AUFNAHMEDAUER-BUTTON (Barrierefreie Einstellung)
+                 OutlinedButton mit Icon für visuelle Klarheit
+                 Öffnet Dialog: 4s, 6s, 8s, 10s
+                 Mindest-Touch-Target: 48dp Höhe
+                 ========================================== -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDurationSettings"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:minWidth="200dp"
+                android:text="@string/app_info"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:maxLines="1"
+                android:ellipsize="none"
+                android:layout_marginTop="2dp"
+                android:accessibilityTraversalAfter="@id/btnCopyResult"
+                app:icon="@android:drawable/ic_menu_recent_history"
+                app:iconGravity="start"
+                app:iconSize="18dp"
+                app:iconTint="@color/text_secondary"
+                app:strokeColor="@color/text_secondary"
+                app:strokeWidth="1dp"
+                app:cornerRadius="24dp"
+                app:rippleColor="@color/ripple_surface" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ==========================================
+         DEBUG PANEL (einklappbar) - Dark Theme
+         Für Screenreader komplett ausgeblendet
+         ========================================== -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/debugCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        android:importantForAccessibility="noHideDescendants"
+        app:cardBackgroundColor="@color/debug_bg"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/debug_border"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Debug Header (Toggle) - Touch-Target 48dp -->
+            <LinearLayout
+                android:id="@+id/debugToggleContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp"
+                android:background="@color/debug_header_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/desc_debug_collapsed">
+
+                <TextView
+                    android:id="@+id/textDebugHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/debug_title"
+                    android:textColor="@color/debug_text_secondary"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/textDebugSummary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/debug_accent"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:layout_marginEnd="10dp"
+                    tools:text="RMS: 450 | 7" />
+
+                <ImageView
+                    android:id="@+id/ivDebugArrow"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@android:drawable/arrow_down_float"
+                    android:contentDescription="@string/debug_expand"
+                    android:importantForAccessibility="no"
+                    app:tint="@color/debug_text_secondary" />
+
+            </LinearLayout>
+
+            <!-- Debug Content (einklappbar) -->
+            <LinearLayout
+                android:id="@+id/debugContentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="12dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/textDebugAudio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/debug_text"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    tools:text="RMS: 450.5 | Peak: 12500" />
+
+                <TextView
+                    android:id="@+id/textDebugResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/debug_text"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:layout_marginTop="4dp"
+                    tools:text="DIGIT: 7 (95%)" />
+
+                <TextView
+                    android:id="@+id/textDebugProbsHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/debug_probabilities"
+                    android:textColor="@color/debug_text_secondary"
+                    android:textSize="11sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginTop="10dp" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/debug_bg_dark"
+                    android:padding="2dp">
+
+                    <LinearLayout
+                        android:id="@+id/llProbabilities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="6dp" />
+                </ScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

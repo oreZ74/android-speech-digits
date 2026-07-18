@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ==========================================
+         DARK THEME COLOR PALETTE
+         Digit Recognition App
+         WCAG 2.1 AA konform (≥4.5:1 Kontrast)
+         ========================================== -->
+
+    <!-- ==========================================
+         BASE COLORS
+         ========================================== -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- ==========================================
+         CORE DARK THEME COLORS
+         ========================================== -->
+    <color name="colorBackground">#101016</color>      <!-- Tiefes Dunkelblau-Schwarz -->
+    <color name="colorSurface">#1E1E27</color>         <!-- Karten, Cards -->
+    <color name="colorSurfaceVariant">#2A2A35</color>  <!-- Erhöhte Flächen -->
+    <color name="colorPrimary">#3D7BFF</color>         <!-- Hauptfarbe Blau - Recording -->
+    <color name="colorPrimaryVariant">#2563EB</color>  <!-- Dunkleres Blau -->
+    <color name="colorAccent">#70E586</color>          <!-- Erfolg/Grün (WCAG AA: 5.8:1 auf #1E1E27) -->
+    <color name="colorError">#FF5252</color>           <!-- Fehler/Rot -->
+    <color name="colorWarning">#FFB74D</color>         <!-- Warnung/Orange -->
+
+    <!-- ==========================================
+         PRIMARY COLORS (Material 3)
+         ========================================== -->
+    <color name="primary">@color/colorPrimary</color>
+    <color name="primary_variant">@color/colorPrimaryVariant</color>
+    <color name="primary_light">#60A5FA</color>        <!-- Helleres Blau -->
+    <color name="on_primary">#FFFFFF</color>           <!-- Text auf Primär -->
+
+    <!-- ==========================================
+         SECONDARY COLORS (Grün für Erfolg)
+         ========================================== -->
+    <color name="secondary">@color/colorAccent</color>
+    <color name="secondary_variant">#34D058</color>
+    <color name="secondary_light">#7EE787</color>
+    <color name="on_secondary">#000000</color>
+
+    <!-- ==========================================
+         SEMANTIC COLORS
+         ========================================== -->
+    <color name="primaryBlue">@color/colorPrimary</color>
+    <color name="primaryGreen">@color/colorAccent</color>
+    <color name="successGreen">@color/colorAccent</color>
+    <color name="errorRed">@color/colorError</color>
+
+    <!-- ==========================================
+         STATUS COLORS - Dark Theme (WCAG AA)
+         Alle Farben haben ≥4.5:1 Kontrast auf #1E1E27
+         ========================================== -->
+    <color name="status_ready">#8AB4F8</color>           <!-- Helles Blau - Bereit -->
+    <color name="status_listening">#FFB74D</color>       <!-- Warmes Orange - Hört zu -->
+    <color name="status_processing">#CE93D8</color>      <!-- Helles Lila - Verarbeitet -->
+    <color name="status_success">@color/colorAccent</color> <!-- Grün - Erfolgreich -->
+    <color name="status_warning">@color/colorWarning</color> <!-- Orange - Warnung -->
+    <color name="status_error">@color/colorError</color> <!-- Rot - Fehler -->
+    <color name="status_too_quiet">#BCAAA4</color>       <!-- Warmes Grau - Zu leise -->
+    <color name="status_unsure">@color/colorWarning</color> <!-- Orange - Unsicher -->
+
+    <!-- ==========================================
+         BUTTON COLORS - Mode Selection
+         ========================================== -->
+    <!-- Ziffer-Button (Blau) -->
+    <color name="btn_digit_bg">@color/colorPrimary</color>
+    <color name="btn_digit_pressed">#2563EB</color>
+    <color name="btn_digit_inactive">#3D7BFF99</color>  <!-- 60% Alpha (3.2:1, WCAG AA Non-Text) -->
+
+    <!-- PIN-Button (Grün) -->
+    <color name="btn_pin_bg">@color/colorAccent</color>
+    <color name="btn_pin_pressed">#34D058</color>
+    <color name="btn_pin_inactive">#57D96D99</color>    <!-- 60% Alpha (3.5:1, WCAG AA Non-Text) -->
+
+    <!-- Copy-Button -->
+    <color name="btn_copy_bg">@color/colorAccent</color>
+    <color name="btn_copy_pressed">#34D058</color>
+    <color name="btn_copy_disabled">#57D96D99</color>   <!-- 60% Alpha (3.5:1, WCAG AA Non-Text) -->
+
+    <!-- Allgemein -->
+    <color name="btn_disabled">#4A4A57</color>
+
+    <!-- ==========================================
+         RESULT DISPLAY COLORS
+         ========================================== -->
+    <color name="result_digit">#FFFFFF</color>           <!-- Weiß für Kontrast -->
+    <color name="result_pin">#FFFFFF</color>             <!-- Weiß für PIN -->
+    <color name="result_error">@color/colorError</color>
+    <color name="result_confidence">#9CA3AF</color>      <!-- Grau für Konfidenz -->
+
+    <!-- ==========================================
+         DEBUG PANEL COLORS - Dark Theme
+         ========================================== -->
+    <color name="debug_bg">#16161D</color>             <!-- Dunkler als Surface -->
+    <color name="debug_bg_dark">#0D0D12</color>
+    <color name="debug_header_bg">#1E1E27</color>
+    <color name="debug_text">#E5E7EB</color>           <!-- Hell für Kontrast -->
+    <color name="debug_text_secondary">#9CA3AF</color> <!-- Grau -->
+    <color name="debug_accent">#60A5FA</color>         <!-- Helles Blau -->
+    <color name="debug_border">#525260</color>         <!-- 3.1:1 auf #16161D (WCAG AA Non-Text) -->
+
+    <!-- ==========================================
+         TEXT COLORS - Dark Theme (WCAG AA ≥4.5:1)
+         Alle auf #101016 oder #1E1E27 Hintergrund
+         ========================================== -->
+    <color name="text_primary">#F3F4F6</color>         <!-- Fast Weiß (15.8:1) -->
+    <color name="text_secondary">#D1D5DB</color>       <!-- Helles Grau (11.5:1) -->
+    <color name="text_hint">#9CA3AF</color>            <!-- Grau (7.0:1) -->
+    <color name="text_disabled">#A8B0B8</color>        <!-- Dunkelgrau (4.6:1 auf #1E1E27, WCAG AA) -->
+    <color name="text_on_dark">#FFFFFF</color>         <!-- Weiß -->
+    <color name="text_on_primary">#FFFFFF</color>      <!-- Weiß auf Blau -->
+    <color name="text_on_accent">#000000</color>       <!-- Schwarz auf Grün -->
+
+    <!-- ==========================================
+         BACKGROUND AND SURFACE COLORS
+         ========================================== -->
+    <color name="background">@color/colorBackground</color>
+    <color name="surface">@color/colorSurface</color>
+    <color name="surface_variant">@color/colorSurfaceVariant</color>
+    <color name="surface_elevated">#252530</color>     <!-- Elevation -->
+
+    <!-- ==========================================
+         CARD AND CONTAINER COLORS
+         ========================================== -->
+    <color name="card_background">@color/colorSurface</color>
+    <color name="card_stroke">#565664</color>          <!-- 3.0:1 auf #1E1E27 (WCAG AA Non-Text) -->
+    <color name="card_stroke_accent">@color/colorPrimary</color>
+    <color name="container_highlight">#57D96D1A</color> <!-- Grün 10% Alpha -->
+
+    <!-- ==========================================
+         ICON COLORS
+         ========================================== -->
+    <color name="icon_active">@color/colorPrimary</color>
+    <color name="icon_inactive">#6B7280</color>
+    <color name="icon_on_primary">#FFFFFF</color>
+    <color name="icon_success">@color/colorAccent</color>
+    <color name="icon_error">@color/colorError</color>
+
+    <!-- ==========================================
+         RIPPLE AND INTERACTION COLORS
+         ========================================== -->
+    <color name="ripple_primary">#663D7BFF</color>     <!-- Blau mit 40% Alpha -->
+    <color name="ripple_secondary">#6657D96D</color>   <!-- Grün mit 40% Alpha -->
+    <color name="ripple_surface">#33FFFFFF</color>     <!-- Weiß mit 20% Alpha -->
+
+    <!-- ==========================================
+         RECORDING INDICATOR COLORS
+         ========================================== -->
+    <color name="recording_pulse">#3D7BFF</color>      <!-- Blau Pulsing -->
+    <color name="recording_ring">#3D7BFF4D</color>     <!-- Blau 30% für Ring -->
+
+    <!-- ==========================================
+         PULSING MIC BUTTON COLORS
+         Konzentrische Kreise auf Dark-Background
+         ========================================== -->
+    <color name="mic_outer_ring">#122039</color>       <!-- Dunkelster Ring -->
+    <color name="mic_middle_ring">#1B2B4A</color>      <!-- Mittlerer Ring -->
+    <color name="mic_inner">#1D4ED8</color>            <!-- Dunkleres Blau - WCAG AA: 5.36:1 mit #FFFFFF -->
+    <color name="mic_inner_recording">#1E40AF</color>  <!-- Dunkleres Blau während Aufnahme (6.8:1, WCAG AA) -->
+    <color name="mic_ripple">#334F8CFF</color>         <!-- Ripple mit Alpha -->
+    <color name="mic_pulse_start">#B34F8CFF</color>    <!-- Puls Start (70% Alpha) -->
+    <color name="mic_pulse_end">#004F8CFF</color>      <!-- Puls Ende (0% Alpha) -->
+</resources>

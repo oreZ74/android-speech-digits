@@ -1,0 +1,2 @@
+# This folder is used in CI for release.keystore
+# NEVER commit keystores to the repo!

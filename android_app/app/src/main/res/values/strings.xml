@@ -1,0 +1,209 @@
+<resources>
+    <!-- ==========================================
+         APP INFO
+         ========================================== -->
+    <string name="app_name">PIN-Eingabe</string>
+    <string name="app_subtitle">Spracheingabe – Offline</string>
+    <!-- Aufnahmedauer: größer für Default, Leerzeichen vor "s" für bessere Lesbarkeit -->
+    <string name="app_info">Aufnahmedauer: 4 s</string>
+    <string name="app_info_dynamic">Aufnahmedauer: %1$d s</string>
+    <!-- Segment-Info nur im Debug sichtbar -->
+    <string name="segment_info">Segmente: %1$d | Valide: %2$d</string>
+
+    <!-- ==========================================
+         MODE BUTTONS
+         ========================================== -->
+    <string name="btn_pin_mode">PIN aufnehmen</string>
+    <string name="btn_recording">Aufnahme läuft…</string>
+    <string name="btn_model_error">Modellfehler</string>
+
+    <!-- ==========================================
+         DURATION OPTIONS
+         ========================================== -->
+    <string name="duration_4s">4 Sekunden</string>
+    <string name="duration_6s">6 Sekunden</string>
+    <string name="duration_8s">8 Sekunden</string>
+    <string name="duration_10s">10 Sekunden</string>
+
+    <!-- ==========================================
+         ACCESSIBILITY DESCRIPTIONS (WCAG 2.1 AA)
+         Kurze, klare deutsche Beschreibungen
+         ========================================== -->
+    <!-- Mode Buttons -->
+    <string name="desc_pin_mode">PIN per Sprache aufnehmen</string>
+    <string name="cd_start_pin_mode">PIN per Spracheingabe aufnehmen</string>
+    <string name="cd_recording_in_progress">Aufnahme läuft</string>
+    <string name="cd_mic_button_idle">PIN per Sprache aufnehmen</string>
+    <string name="cd_mic_button_recording">Aufnahme läuft, bitte sprechen</string>
+    <string name="cd_recording_stop">Aufnahme stoppen</string>
+    <string name="state_recording">Aufnahme läuft</string>
+    <string name="a11y_pin_detected_copy">PIN erkannt! Schaltfläche PIN kopieren.</string>
+    <string name="a11y_duration_changed">Aufnahmedauer: %1$d Sekunden</string>
+
+    <!-- Duration Settings Button -->
+    <string name="cd_duration_settings">Aufnahmedauer: %1$d Sekunden</string>
+
+    <!-- Result Area -->
+    <string name="desc_result_area">Erkennungsergebnis</string>
+    <string name="desc_digit_result">Erkannte Ziffer: %1$s, Konfidenz %2$d Prozent</string>
+    <string name="desc_pin_result">Erkannte PIN: %1$s, Konfidenz %2$d Prozent</string>
+
+    <!-- Copy Button -->
+    <string name="desc_copy_button">Ergebnis in Zwischenablage kopieren</string>
+    <string name="desc_copy_button_copied">Wurde in Zwischenablage kopiert</string>
+    <string name="desc_copy_button_disabled">Kopieren nicht verfügbar</string>
+    <string name="desc_copy_success">Kopiert</string>
+    <string name="cd_copy_pin">PIN kopieren</string>
+
+    <!-- Debug Panel -->
+    <string name="desc_debug_toggle">Debug-Informationen</string>
+    <string name="desc_debug_panel_expanded">Debug-Panel geöffnet</string>
+    <string name="desc_debug_panel_collapsed">Debug-Panel geschlossen</string>
+    <string name="desc_debug_collapsed">Debug-Informationen, eingeklappt</string>
+    <string name="desc_debug_expanded">Debug-Informationen, ausgeklappt. Doppeltippen zum Schließen.</string>
+
+    <!-- ==========================================
+         STATUS MESSAGES
+         ========================================== -->
+    <string name="status_ready">Bereit</string>
+    <string name="status_idle">Wähle einen Modus</string>
+    <string name="status_listening">Höre zu…</string>
+    <string name="status_processing">Verarbeitet…</string>
+    <string name="status_success">Erfolgreich!</string>
+    <string name="status_too_quiet">Zu leise!</string>
+    <string name="status_unsure">Unsicher</string>
+    <string name="status_error">Fehler</string>
+    <string name="status_no_pin">Keine PIN erkannt</string>
+    <string name="status_pin_detected">PIN erkannt!</string>
+    <string name="status_digit_detected">Ziffer erkannt!</string>
+    <string name="status_hardware_key_triggered">Lautstärke-Taste: Starte Aufnahme…</string>
+    <string name="status_recording_cancelled">Aufnahme abgebrochen</string>
+
+    <!-- ==========================================
+         INSTRUCTIONS
+         ========================================== -->
+    <string name="instruction_press_button">Starte die Aufnahme und sprich deine PIN</string>
+    <string name="instruction_speak_pin">Sprich jetzt deine PIN (4 Sekunden)</string>
+    <string name="instruction_speak_pin_dynamic">Sprich jetzt deine PIN (%1$d Sekunden)</string>
+    <string name="instruction_speak_louder">Bitte lauter sprechen</string>
+    <string name="instruction_speak_clearer">Bitte deutlicher sprechen</string>
+    <string name="instruction_wait">Warte kurz…</string>
+    <string name="instruction_try_again">Bitte noch einmal versuchen</string>
+
+    <!-- ==========================================
+         ERROR MESSAGES (Detailed)
+         ========================================== -->
+    <string name="error_no_pin_speak_again">Bitte noch einmal deutlich sprechen.</string>
+    <string name="error_too_quiet_closer">Zu leise – näher ans Mikrofon gehen.</string>
+    <string name="error_unsure_recognition">Erkennung nicht eindeutig – bitte langsamer und deutlicher sprechen.</string>
+    <string name="error_permission">Mikrofon-Berechtigung benötigt!</string>
+    <string name="error_model_load">Modell konnte nicht geladen werden!</string>
+    <string name="error_classification">Klassifikation fehlgeschlagen</string>
+    <string name="error_unknown">Unbekannter Fehler</string>
+
+    <!-- ==========================================
+         RESULTS
+         ========================================== -->
+    <string name="result_digit">Erkannte Ziffer: %1$s</string>
+    <string name="result_confidence">Konfidenz: %1$d%%</string>
+    <string name="result_confidence_percent">%1$d%%</string>
+    <string name="result_copied">In Zwischenablage kopiert</string>
+    <string name="result_low_confidence">Niedrige Konfidenz</string>
+
+    <!-- ==========================================
+         COPY BUTTON
+         ========================================== -->
+    <string name="btn_copy_pin">PIN kopieren</string>
+    <string name="btn_copy_pin_done">Kopiert</string>
+
+    <!-- ==========================================
+         RECORDING
+         ========================================== -->
+    <string name="recording_digit">Aufnahme läuft…</string>
+    <string name="recording_pin">PIN-Aufnahme läuft…</string>
+    <string name="classifying">Klassifiziere…</string>
+    <string name="classifying_pin">Klassifiziere PIN…</string>
+
+    <!-- ==========================================
+         DEBUG PANEL
+         ========================================== -->
+    <string name="debug_title">DEBUG INFO</string>
+    <string name="debug_collapse">Einklappen</string>
+    <string name="debug_expand">Ausklappen</string>
+    <string name="debug_summary">Segmente: %1$d | Valide: %2$d | Model: %3$s</string>
+    <string name="debug_audio_metrics">RMS: %1$.1f | Peak: %2$d</string>
+    <string name="debug_error_rms_peak">Letzter Fehler – RMS: %1$d, Peak: %2$d</string>
+    <string name="debug_result">Ergebnis: %1$s</string>
+    <string name="debug_probabilities">Alle Wahrscheinlichkeiten:</string>
+    <string name="debug_model_name">digits_rawwave_12cls_v4d.tflite</string>
+
+    <!-- ==========================================
+         TOASTS
+         ========================================== -->
+    <string name="toast_permission_granted">Mikrofon-Berechtigung erteilt</string>
+    <string name="toast_pin_copied">PIN \"%1$s\" kopiert!</string>
+    <string name="toast_digit_copied">Ziffer \"%1$s\" kopiert!</string>
+    <string name="toast_low_confidence">Niedrige Konfidenz! Bitte deutlicher sprechen.</string>
+    <string name="toast_copied_to_clipboard">In Zwischenablage kopiert</string>
+    <string name="toast_duration_changed">Aufnahmedauer auf %1$s geändert</string>
+
+    <!-- ==========================================
+         DURATION SETTINGS DIALOG (WCAG 2.2.1)
+         ========================================== -->
+    <string name="dialog_duration_title">Aufnahmedauer wählen</string>
+    <string name="dialog_cancel">Abbrechen</string>
+
+    <!-- ==========================================
+         INFO / HILFE DIALOG
+         ========================================== -->
+    <string name="cd_info_button">Hilfe</string>
+    <string name="dialog_help_title">Hilfe</string>
+    <string name="dialog_help_content">So funktioniert die PIN-Eingabe:\n\n1. „PIN aufnehmen" drücken (oder Lauter-Taste)\n2. PIN deutlich sprechen (z.B. „Eins Zwei Drei Vier")\n3. Ergebnis optional in Zwischenablage kopieren\n\nTipps:\n• Deutlich und nicht zu schnell sprechen\n• In ruhiger Umgebung aufnehmen\n• Bei Bedarf Aufnahmedauer anpassen\n\nLautstärke-Tasten:\n• Lauter-Taste: Aufnahme starten\n• Leiser-Taste: Laufende Aufnahme abbrechen\n\nBarrierefreiheit:\n• Alle Funktionen sind mit TalkBack bedienbar\n• Hardware-Tasten funktionieren auch mit TalkBack\n\nDatenschutz:\n• Alle Daten werden lokal verarbeitet\n• Keine Internetverbindung erforderlich</string>
+    <string name="dialog_help_close">Schließen</string>
+
+    <!-- ==========================================
+         SETTINGS (Phase 1)
+         ========================================== -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_feedback_header">Feedback</string>
+    <string name="settings_sound_label">Ton bei Start/Stop</string>
+    <string name="settings_sound_description">Kurzer Ton beim Starten und Stoppen der Aufnahme</string>
+    <string name="settings_sound_hint">Kurzer Beep-Ton zur Bestätigung. Respektiert Lautlos-Modus.</string>
+    <string name="settings_sound_enabled">Ton aktiviert</string>
+    <string name="settings_sound_disabled">Ton deaktiviert</string>
+    <string name="settings_vibration_label">Vibration bei Start/Stop</string>
+    <string name="settings_vibration_description">Kurze Vibration beim Starten und Stoppen der Aufnahme</string>
+    <string name="settings_vibration_hint">Kurze Vibration zur Bestätigung.</string>
+    <string name="settings_vibration_enabled">Vibration aktiviert</string>
+    <string name="settings_vibration_disabled">Vibration deaktiviert</string>
+    <string name="settings_accessibility_note">Hinweis: TalkBack-Ansagen bleiben immer aktiv und können nicht deaktiviert werden.</string>
+
+    <!-- ==========================================
+         THEME SETTINGS
+         ========================================== -->
+    <string name="settings_theme_header">Design</string>
+    <string name="settings_theme_dark">Dunkel</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_system">System-Standard</string>
+    <string name="settings_theme_description">Änderungen werden sofort übernommen</string>
+    <string name="settings_theme_changed_dark">Dunkles Design aktiviert</string>
+    <string name="settings_theme_changed_light">Helles Design aktiviert</string>
+    <string name="settings_theme_changed_system">System-Design aktiviert</string>
+
+    <!-- ==========================================
+         INPUT LANGUAGE HINT
+         ========================================== -->
+    <string name="input_language_hint"></string>
+
+    <!-- ==========================================
+         LANGUAGE SETTINGS
+         ========================================== -->
+    <string name="settings_language_header">Sprache</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_language_german">Deutsch</string>
+    <string name="settings_language_english">English</string>
+    <string name="settings_language_description">Sprachauswahl für die App-Oberfläche</string>
+    <string name="settings_language_changed_system">System-Sprache aktiviert</string>
+    <string name="settings_language_changed_german">Deutsch aktiviert</string>
+    <string name="settings_language_changed_english">English activated</string>
+</resources>

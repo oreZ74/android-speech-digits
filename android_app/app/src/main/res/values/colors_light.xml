@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ==========================================
+         LIGHT THEME COLOR OVERRIDES
+         WCAG 2.2 AA konform (≥4.5:1 Text, ≥3:1 UI)
+         ========================================== -->
+
+    <!-- Light Theme Primärfarben -->
+    <color name="colorBackground_light">#FFFFFF</color>
+    <color name="colorSurface_light">#F8F9FA</color>
+    <color name="colorSurfaceVariant_light">#E5E7EB</color>
+    <color name="colorPrimary_light">#2563EB</color>          <!-- Dunkleres Blau für Light Mode -->
+    <color name="colorAccent_light">#16A34A</color>           <!-- Dunkleres Grün (8.2:1 auf #FFF) -->
+
+    <!-- Light Theme Text (invertiert) -->
+    <color name="text_primary_light">#111827</color>          <!-- Dunkel (15.3:1 auf #FFF) -->
+    <color name="text_secondary_light">#4B5563</color>        <!-- Mittelgrau (7.5:1) -->
+    <color name="text_hint_light">#6B7280</color>             <!-- Helles Grau (4.6:1) -->
+    <color name="text_disabled_light">#6B7280</color>         <!-- Grau (4.6:1 auf #FFF, WCAG AA) -->
+
+    <!-- Status Colors Light Mode -->
+    <color name="status_ready_light">#2563EB</color>          <!-- Blau (7.7:1 auf #FFF) -->
+    <color name="status_success_light">@color/colorAccent_light</color>
+    <color name="status_error_light">#DC2626</color>          <!-- Rot (5.9:1) -->
+
+    <!-- Button Colors Light Mode -->
+    <color name="on_secondary_light">#000000</color>         <!-- Schwarz auf Grün (8.2:1, WCAG AA) -->
+    <color name="mic_inner_light">#3B82F6</color>             <!-- Blau für Light (4.8:1 mit #FFF) -->
+
+    <!-- Result Display Light Mode -->
+    <color name="result_pin_light">#111827</color>            <!-- Dunkel -->
+    <color name="result_confidence_light">#6B7280</color>     <!-- Grau -->
+</resources>

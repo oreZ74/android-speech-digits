@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ==========================================
+         DEUTSCHE ZIFFERNERKENNUNG - STYLES
+         Material 3 kompatibel, Barrierefrei
+         ========================================== -->
+
+    <!-- ========================================
+         MODE BUTTONS (Ziffer / PIN)
+         Große, runde Buttons mit Icon + Text
+         ======================================== -->
+    
+    <!-- Basis-Style für Modus-Buttons -->
+    <style name="Widget.MyDigits.Button.Mode" parent="Widget.Material3.Button">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="cornerRadius">60dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    
+    <!-- Ziffern-Modus Button (Blau) -->
+    <style name="Widget.MyDigits.Button.Digit" parent="Widget.MyDigits.Button.Mode">
+        <item name="backgroundTint">@color/btn_digit_bg</item>
+        <item name="rippleColor">@color/ripple_secondary</item>
+    </style>
+    
+    <!-- PIN-Modus Button (Grün) -->
+    <style name="Widget.MyDigits.Button.Pin" parent="Widget.MyDigits.Button.Mode">
+        <item name="backgroundTint">@color/btn_pin_bg</item>
+        <item name="rippleColor">@color/ripple_primary</item>
+    </style>
+
+    <!-- ========================================
+         COPY BUTTON
+         ======================================== -->
+    
+    <style name="Widget.MyDigits.Button.Copy" parent="Widget.Material3.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:minWidth">200dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/btn_copy_bg</item>
+        <item name="rippleColor">@color/ripple_primary</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
+    
+    <style name="Widget.MyDigits.Button.Copy.Disabled" parent="Widget.MyDigits.Button.Copy">
+        <item name="backgroundTint">@color/btn_copy_disabled</item>
+        <item name="android:textColor">@color/text_disabled</item>
+    </style>
+
+    <!-- ========================================
+         TEXT STYLES
+         ======================================== -->
+    
+    <!-- Basis TextAppearance -->
+    <style name="TextAppearance.MyDigits" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <!-- App-Titel (groß, fett) -->
+    <style name="TextAppearance.MyDigits.Title" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+    
+    <!-- App-Untertitel (kleiner, grau) -->
+    <style name="TextAppearance.MyDigits.Subtitle" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Status-Text ("Höre zu…", "PIN erkannt!") -->
+    <style name="TextAppearance.MyDigits.Status" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/status_ready</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- ========================================
+         RESULT STYLES
+         ======================================== -->
+    
+    <!-- Erkannte Ziffer (Single Digit) - sehr groß -->
+    <style name="TextAppearance.MyDigits.Result" parent="TextAppearance.MyDigits">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="TextAppearance.MyDigits.Result.Digit" parent="TextAppearance.MyDigits.Result">
+        <item name="android:textSize">80sp</item>
+        <item name="android:textColor">@color/result_digit</item>
+    </style>
+    
+    <!-- Erkannte PIN - groß, grün, mit Letter-Spacing -->
+    <style name="TextAppearance.MyDigits.Result.Pin" parent="TextAppearance.MyDigits.Result">
+        <item name="android:textSize">64sp</item>
+        <item name="android:textColor">@color/result_pin</item>
+        <item name="android:letterSpacing">0.2</item>
+    </style>
+    
+    <!-- Konfidenz-Anzeige -->
+    <style name="TextAppearance.MyDigits.Confidence" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Frame-Info (Frames: N | Valid: M) -->
+    <style name="TextAppearance.MyDigits.FrameInfo" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Anweisungen und Hinweise -->
+    <style name="TextAppearance.MyDigits.Instruction" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Info-Text (Footer) -->
+    <style name="TextAppearance.MyDigits.Info" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- ========================================
+         DEBUG PANEL STYLES
+         ======================================== -->
+    
+    <!-- Debug Basis Style -->
+    <style name="TextAppearance.MyDigits.Debug" parent="TextAppearance.MyDigits">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">14sp</item>  <!-- Mindestgröße für Barrierefreiheit -->
+    </style>
+    
+    <!-- Debug Panel Card -->
+    <style name="Widget.MyDigits.DebugCard" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/debug_bg</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/debug_border</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+    
+    <!-- Debug Header (Touch-Target mindestens 48dp) -->
+    <style name="TextAppearance.MyDigits.Debug.Header" parent="TextAppearance.MyDigits.Debug">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/debug_text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <!-- Debug Summary (eingeklappt) -->
+    <style name="TextAppearance.MyDigits.Debug.Summary" parent="TextAppearance.MyDigits.Debug">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/debug_text_secondary</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+    
+    <!-- Debug Content Text -->
+    <style name="TextAppearance.MyDigits.Debug.Content" parent="TextAppearance.MyDigits.Debug">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/debug_text</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+    
+    <!-- Debug Label -->
+    <style name="TextAppearance.MyDigits.Debug.Label" parent="TextAppearance.MyDigits.Debug">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/debug_text_secondary</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <!-- ========================================
+         CONTAINER STYLES
+         ======================================== -->
+    
+    <!-- Result Container Card -->
+    <style name="Widget.MyDigits.ResultCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="contentPadding">24dp</item>
+    </style>
+    
+    <!-- Copy Success Indicator -->
+    <style name="TextAppearance.MyDigits.CopySuccess" parent="TextAppearance.MyDigits">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/status_success</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+</resources>

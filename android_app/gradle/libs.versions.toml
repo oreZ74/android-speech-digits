@@ -1,0 +1,39 @@
+[versions]
+agp = "8.13.2"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+appcompat = "1.6.1"
+material = "1.10.0"
+activity = "1.10.1"
+constraintlayout = "2.1.4"
+kotlin = "2.3.21"
+coreKtx = "1.17.0"
+lifecycle = "2.8.7"
+mockk = "1.13.14"
+kotlinxCoroutinesTest = "1.9.0"
+testRules = "1.6.1"
+testRunner = "1.6.2"
+tensorflow = "2.16.1"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+litert-core = { group = "org.tensorflow", name = "tensorflow-lite", version.ref = "tensorflow" }
+litert-flex = { group = "org.tensorflow", name = "tensorflow-lite-select-tf-ops", version.ref = "tensorflow" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+test-rules = { group = "androidx.test", name = "rules", version.ref = "testRules" }
+test-runner = { group = "androidx.test", name = "runner", version.ref = "testRunner" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

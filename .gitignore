@@ -1,0 +1,194 @@
+# ================================
+# Digit_Processing .gitignore
+# Professional ML/Mobile Project
+# ================================
+
+# ------------------------
+# LaTeX Bachelorarbeit
+# ------------------------
+# Erlauben: Source-Dateien, Bilder, Tabellen
+# Ignorieren: Build-Artefakte nur
+thesis/**/*.aux
+thesis/**/*.log
+thesis/**/*.out
+thesis/**/*.toc
+thesis/**/*.lof
+thesis/**/*.lot
+thesis/**/*.lol
+thesis/**/*.bbl
+thesis/**/*.bcf
+thesis/**/*.blg
+thesis/**/*.run.xml
+thesis/**/*.fls
+thesis/**/*.fdb_latexmk
+thesis/**/*.synctex.gz
+thesis/**/*.acn
+thesis/**/*.glo
+thesis/**/*.ist
+thesis/**/*.glsdefs
+thesis/**/*.acr
+
+# Thesis (vorerst)
+/thesis/
+
+# ------------------------
+# GitHub Actions (erlauben)
+# ------------------------
+!.github/
+!.github/workflows/
+
+# GitHub Instructions
+.github/copilot-instructions.md
+
+# ------------------------
+# Python
+# ------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+
+
+# analysis feature files (scripts are versioned)
+/analysis/*.png
+/analysis/*.csv
+/analysis/*.json
+!analysis/*.py
+!analysis/*.md
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python build/dist
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+myenv/
+.env/
+
+# ------------------------
+# Datasets (LARGE - regenerierbar)
+# ------------------------
+# Audio files (überall) - aber nicht die Verzeichnisstruktur
+*.flac
+*.wav
+*.mp3
+*.ogg
+*.m4a
+
+# Aber: READMEs, txt-Dateien und Verzeichnisstruktur im data/ Ordner erlauben
+!data/**/*.md
+!data/**/*.txt
+!data/**/*.py
+
+# Model binary files (große Binärdateien)
+*.h5
+*.keras
+*.pb
+*.onnx
+*.pt
+*.pth
+
+# ABER: TFLite Modelle im models-Ordner erlauben
+!models/tflite/*.tflite
+
+# ABER: Labels-Dateien erlauben
+!models/labels/*.txt
+
+# ABER: Android assets erlauben
+!android_app/app/src/main/assets/*.tflite
+!android_app/app/src/main/assets/*.txt
+
+# ABER: Pipeline labels erlauben
+!python/digit_pipeline/config/labels.txt
+
+# ------------------------
+# Android
+# ------------------------
+# Gradle
+.gradle/
+.kotlin/
+
+# Build outputs
+build/
+**/build/
+
+# Local configuration
+local.properties
+
+# Keystores (NIEMALS committen!)
+/keystore/*.keystore
+/keystore/*.jks
+android_app/keystore/*.keystore
+android_app/keystore/*.jks
+*.keystore
+*.jks
+
+# Github Actions Konfiguration (erlauben - ausgenommen weiter oben)
+# Kommentar bleibt für Klarheit
+
+# My documentations
+android_app/docs/
+mydocs/
+
+# IntelliJ/Android Studio
+.idea/
+*.iml
+out/
+
+# ------------------------
+# Training outputs (regenerierbar)
+# ------------------------
+python/digit_pipeline/outputs/
+*.log
+
+# ABER: Training-Metriken erlauben
+!python/digit_pipeline/outputs/**/*.csv
+!python/digit_pipeline/outputs/**/*.png
+!python/digit_pipeline/outputs/**/*.md
+
+# ------------------------
+# OS-specific
+# ------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ------------------------
+# Temporary / Backup
+# ------------------------
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+*.swp
+*~
+
+# Editor settings (persönlich)
+.vscode/settings.json
+.vs/
+
+# ------------------------
+# Option A: Lokale Messdaten nicht veröffentlichen
+# (Skripte + abgeleitete Artefakte wie LaTeX-Tabellen/Plots sind OK)
+# ------------------------
+results/*.json
+results/*.csv
+results/*.txt
+
+
+
